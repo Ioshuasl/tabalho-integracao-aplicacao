@@ -1,0 +1,1100 @@
+{
+  "item": [
+    {
+      "id": "149e0f74-d10a-404b-86dc-c5afd07aa7b4",
+      "name": "api",
+      "item": [
+        {
+          "id": "0cafa35e-458b-4af0-b840-73e175137eb8",
+          "name": "entregas",
+          "item": [
+            {
+              "id": "9db4684c-bf8a-4bda-9150-3531d63e9df6",
+              "name": "Cria uma nova entrega",
+              "request": {
+                "name": "Cria uma nova entrega",
+                "description": {},
+                "url": {
+                  "path": [
+                    "api",
+                    "entregas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"idPedido\": \"<integer>\",\n  \"idCliente\": \"<integer>\",\n  \"nomeDestinatario\": \"<string>\",\n  \"transportadora\": \"<string>\",\n  \"statusEntrega\": \"<string>\",\n  \"dataPrevista\": \"<string>\",\n  \"dataEntrega\": \"<string>\",\n  \"cidadeDestino\": \"<string>\",\n  \"ufDestino\": \"<string>\",\n  \"valorFrete\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "id": "2a252666-22d9-4899-9865-553ed3775149",
+                  "name": "Entrega criada com sucesso",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"idPedido\": \"<integer>\",\n  \"idCliente\": \"<integer>\",\n  \"nomeDestinatario\": \"<string>\",\n  \"transportadora\": \"<string>\",\n  \"statusEntrega\": \"<string>\",\n  \"dataPrevista\": \"<string>\",\n  \"dataEntrega\": \"<string>\",\n  \"cidadeDestino\": \"<string>\",\n  \"ufDestino\": \"<string>\",\n  \"valorFrete\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"id\": -94083854,\n  \"idPedido\": 6677462,\n  \"idCliente\": -91073981,\n  \"nomeDestinatario\": \"aliquip adipisicing magna reprehenderit\",\n  \"transportadora\": \"TOTAL_EXPRESS\",\n  \"statusEntrega\": \"EM_TRANSITO\",\n  \"dataPrevista\": \"nostrud adipisicing reprehenderit non\",\n  \"dataEntrega\": \"magna in nostrud commodo qui\",\n  \"cidadeDestino\": \"in sed Ut\",\n  \"ufDestino\": \"SP\",\n  \"valorFrete\": 76088834.10416251,\n  \"createdAt\": \"labore nisi dolore Duis\",\n  \"updatedAt\": \"ea enim ut\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "2a95816f-dfdd-4144-92a2-ef76b2fa489d",
+                  "name": "Erro de validação",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"idPedido\": \"<integer>\",\n  \"idCliente\": \"<integer>\",\n  \"nomeDestinatario\": \"<string>\",\n  \"transportadora\": \"<string>\",\n  \"statusEntrega\": \"<string>\",\n  \"dataPrevista\": \"<string>\",\n  \"dataEntrega\": \"<string>\",\n  \"cidadeDestino\": \"<string>\",\n  \"ufDestino\": \"<string>\",\n  \"valorFrete\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "016f7cef-e5a7-4dc9-8091-730ea2afb44a",
+              "name": "Lista entregas com paginação e filtros",
+              "request": {
+                "name": "Lista entregas com paginação e filtros",
+                "description": {},
+                "url": {
+                  "path": [
+                    "api",
+                    "entregas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": false,
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "statusEntrega",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ufDestino",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dataPrevistaInicio",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dataPrevistaFim",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "907c57bd-0c3a-4cac-bf7a-8a6c6f5f8ecd",
+                  "name": "Lista paginada de entregas",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "key": "statusEntrega",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "ufDestino",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "dataPrevistaInicio",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "dataPrevistaFim",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "c495b3e3-d8f5-4772-a96f-9b8cc581966f",
+              "name": "{id}",
+              "item": [
+                {
+                  "id": "f2d4991c-3719-497b-9172-60214b7e21a9",
+                  "name": "Busca uma entrega pelo id",
+                  "request": {
+                    "name": "Busca uma entrega pelo id",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas",
+                        ":id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "<integer>",
+                          "key": "id",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "a5fee207-67a6-4d09-a59c-c62ac7a1234e",
+                      "name": "Entrega encontrada",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "api",
+                            "entregas",
+                            ":id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "<integer>",
+                              "key": "id",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"id\": -94083854,\n  \"idPedido\": 6677462,\n  \"idCliente\": -91073981,\n  \"nomeDestinatario\": \"aliquip adipisicing magna reprehenderit\",\n  \"transportadora\": \"TOTAL_EXPRESS\",\n  \"statusEntrega\": \"EM_TRANSITO\",\n  \"dataPrevista\": \"nostrud adipisicing reprehenderit non\",\n  \"dataEntrega\": \"magna in nostrud commodo qui\",\n  \"cidadeDestino\": \"in sed Ut\",\n  \"ufDestino\": \"SP\",\n  \"valorFrete\": 76088834.10416251,\n  \"createdAt\": \"labore nisi dolore Duis\",\n  \"updatedAt\": \"ea enim ut\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "d899d7be-a6c4-4e13-a8ee-9d5b2ea21fb2",
+                      "name": "Entrega não encontrada",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "api",
+                            "entregas",
+                            ":id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "<integer>",
+                              "key": "id",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                },
+                {
+                  "id": "7758e97e-efce-4745-9b92-5f72913114a8",
+                  "name": "Atualiza uma entrega (substituição completa)",
+                  "request": {
+                    "name": "Atualiza uma entrega (substituição completa)",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas",
+                        ":id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "<integer>",
+                          "key": "id",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "auth": null,
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"idPedido\": \"<integer>\",\n  \"idCliente\": \"<integer>\",\n  \"nomeDestinatario\": \"<string>\",\n  \"transportadora\": \"<string>\",\n  \"statusEntrega\": \"<string>\",\n  \"dataPrevista\": \"<string>\",\n  \"dataEntrega\": \"<string>\",\n  \"cidadeDestino\": \"<string>\",\n  \"ufDestino\": \"<string>\",\n  \"valorFrete\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "d1245bbf-db0d-4872-883f-3600d9c60790",
+                      "name": "Entrega atualizada",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "api",
+                            "entregas",
+                            ":id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "<integer>",
+                              "key": "id",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idPedido\": \"<integer>\",\n  \"idCliente\": \"<integer>\",\n  \"nomeDestinatario\": \"<string>\",\n  \"transportadora\": \"<string>\",\n  \"statusEntrega\": \"<string>\",\n  \"dataPrevista\": \"<string>\",\n  \"dataEntrega\": \"<string>\",\n  \"cidadeDestino\": \"<string>\",\n  \"ufDestino\": \"<string>\",\n  \"valorFrete\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"id\": -94083854,\n  \"idPedido\": 6677462,\n  \"idCliente\": -91073981,\n  \"nomeDestinatario\": \"aliquip adipisicing magna reprehenderit\",\n  \"transportadora\": \"TOTAL_EXPRESS\",\n  \"statusEntrega\": \"EM_TRANSITO\",\n  \"dataPrevista\": \"nostrud adipisicing reprehenderit non\",\n  \"dataEntrega\": \"magna in nostrud commodo qui\",\n  \"cidadeDestino\": \"in sed Ut\",\n  \"ufDestino\": \"SP\",\n  \"valorFrete\": 76088834.10416251,\n  \"createdAt\": \"labore nisi dolore Duis\",\n  \"updatedAt\": \"ea enim ut\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "04360e39-4d45-4751-8353-32ce7cc6bcf7",
+                      "name": "Entrega não encontrada",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "api",
+                            "entregas",
+                            ":id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "<integer>",
+                              "key": "id",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idPedido\": \"<integer>\",\n  \"idCliente\": \"<integer>\",\n  \"nomeDestinatario\": \"<string>\",\n  \"transportadora\": \"<string>\",\n  \"statusEntrega\": \"<string>\",\n  \"dataPrevista\": \"<string>\",\n  \"dataEntrega\": \"<string>\",\n  \"cidadeDestino\": \"<string>\",\n  \"ufDestino\": \"<string>\",\n  \"valorFrete\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    },
+                    {
+                      "id": "43e00940-4581-44c4-95de-c2ceaa989f15",
+                      "name": "Erro de validação",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "api",
+                            "entregas",
+                            ":id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "<integer>",
+                              "key": "id",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idPedido\": \"<integer>\",\n  \"idCliente\": \"<integer>\",\n  \"nomeDestinatario\": \"<string>\",\n  \"transportadora\": \"<string>\",\n  \"statusEntrega\": \"<string>\",\n  \"dataPrevista\": \"<string>\",\n  \"dataEntrega\": \"<string>\",\n  \"cidadeDestino\": \"<string>\",\n  \"ufDestino\": \"<string>\",\n  \"valorFrete\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                },
+                {
+                  "id": "2f8dbbb4-784a-4781-aefb-77bab25b1577",
+                  "name": "Remove uma entrega",
+                  "request": {
+                    "name": "Remove uma entrega",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas",
+                        ":id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "<integer>",
+                          "key": "id",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "32becfc2-72a6-4b76-b9dd-c047d6893601",
+                      "name": "Entrega removida",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "api",
+                            "entregas",
+                            ":id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "<integer>",
+                              "key": "id",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    },
+                    {
+                      "id": "71dd4501-eb97-48b3-bff9-776f0e7d129c",
+                      "name": "Entrega não encontrada",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "api",
+                            "entregas",
+                            ":id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "<integer>",
+                              "key": "id",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                }
+              ],
+              "event": []
+            },
+            {
+              "id": "a3ff5a9a-fa27-4686-9650-5c4fd68b0b18",
+              "name": "Gera uma nova remessa CSV (\"sistema_entrega_NNN.csv\") conforme o contrato Grupo7 -> Grupo1",
+              "request": {
+                "name": "Gera uma nova remessa CSV (\"sistema_entrega_NNN.csv\") conforme o contrato Grupo7 -> Grupo1",
+                "description": {},
+                "url": {
+                  "path": [
+                    "api",
+                    "entregas",
+                    "exportacoes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": false,
+                      "key": "statusEntrega",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ufDestino",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dataPrevistaInicio",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "dataPrevistaFim",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "4f256732-7bc0-4268-89d4-86bf943b5e22",
+                  "name": "Arquivo CSV da remessa gerado com sucesso (text/csv)",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas",
+                        "exportacoes"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "key": "statusEntrega",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "ufDestino",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "dataPrevistaInicio",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "dataPrevistaFim",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "method": "POST",
+                    "body": {}
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "ebc65c71-0b26-4f5b-b4c6-ffe0d1402706",
+                  "name": "Erro de validação dos filtros",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "api",
+                        "entregas",
+                        "exportacoes"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "key": "statusEntrega",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "ufDestino",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "dataPrevistaInicio",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "dataPrevistaFim",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "method": "POST",
+                    "body": {}
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "7178f8e8-0e83-44c4-9f2d-24c0ae5e8f42",
+          "name": "Importa uma remessa CSV do Sistema Financeiro (contrato Grupo6 -> Grupo7)",
+          "request": {
+            "name": "Importa uma remessa CSV do Sistema Financeiro (contrato Grupo6 -> Grupo7)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "financeiro",
+                "importacoes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "arquivo",
+                  "type": "file",
+                  "description": "(Required) Arquivo CSV enviado pelo Sistema Financeiro (financeiro_lancamentos_<AAAAMMDD>_<NNN>.csv)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb2eca91-0b3e-4d64-8ab6-320f105ae495",
+              "name": "Remessa processada (pode conter registros rejeitados sem interromper o processamento)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "financeiro",
+                    "importacoes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Arquivo CSV enviado pelo Sistema Financeiro (financeiro_lancamentos_<AAAAMMDD>_<NNN>.csv)",
+                        "type": "text/plain"
+                      },
+                      "key": "arquivo",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nomeArquivo\": \"tempor\",\n  \"totalLido\": 78459883,\n  \"totalProcessado\": 17138790,\n  \"totalRejeitado\": -10813031,\n  \"erros\": [\n    {\n      \"linha\": 1654057,\n      \"motivo\": \"nostrud\"\n    },\n    {\n      \"linha\": 4705485,\n      \"motivo\": \"commodo cillum irure Duis\"\n    }\n  ],\n  \"nomeArquivoRejeitados\": \"ad\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7086006-891e-498b-a47f-71588911c08b",
+              "name": "Nenhum arquivo enviado",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "financeiro",
+                    "importacoes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Arquivo CSV enviado pelo Sistema Financeiro (financeiro_lancamentos_<AAAAMMDD>_<NNN>.csv)",
+                        "type": "text/plain"
+                      },
+                      "key": "arquivo",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45afb310-6397-4b8c-9b3b-5ab98b2cab3f",
+              "name": "Remessa (nome de arquivo) já recebida e processada anteriormente",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "financeiro",
+                    "importacoes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Arquivo CSV enviado pelo Sistema Financeiro (financeiro_lancamentos_<AAAAMMDD>_<NNN>.csv)",
+                        "type": "text/plain"
+                      },
+                      "key": "arquivo",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e810876f-495a-4462-8974-6fda9b5302d0",
+              "name": "Arquivo rejeitado por completo: cabeçalho/delimitador/encoding inválido",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "financeiro",
+                    "importacoes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Arquivo CSV enviado pelo Sistema Financeiro (financeiro_lancamentos_<AAAAMMDD>_<NNN>.csv)",
+                        "type": "text/plain"
+                      },
+                      "key": "arquivo",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:3000",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e0cdc96f-22a8-4fbd-abe6-5b5a33932bc0",
+    "name": "Sistema de Entregas API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API do Sistema de Entregas (Grupo 7) - Integração de Aplicações por Arquivos CSV",
+      "type": "text/plain"
+    }
+  }
+}

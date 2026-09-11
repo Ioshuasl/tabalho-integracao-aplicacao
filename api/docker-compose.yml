@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: entregas-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: entregas
+      POSTGRES_PASSWORD: entregas
+      POSTGRES_DB: sistema_entregas
+    ports:
+      - "5432:5432"
+    volumes:
+      - entregas_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  entregas_postgres_data:

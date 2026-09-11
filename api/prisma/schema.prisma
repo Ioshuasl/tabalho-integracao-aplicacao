@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Espelha o enum de domínio em src/modules/entregas/enum/entregas_enum.ts.
+// Mantido separado de propósito (Clean Architecture): a camada de domínio
+// não importa tipos gerados pelo Prisma, e a camada de persistência aqui
+// não importa tipos de domínio. A tradução entre os dois acontece no
+// repository (fronteira infraestrutura <-> negócio).
+enum StatusEntrega {
+  PENDENTE
+  EM_TRANSITO
+  ENTREGUE
+  DEVOLVIDA
+  CANCELADA
+}
+
+enum Transportadora {
+  CORREIOS
+  JADLOG
+  TOTAL_EXPRESS
+  BRASPRESS
+  LOGGI
+  TRANSPORTADORA_PROPRIA
+}
+
+model Entrega {
+  id               Int            @id @default(autoincrement()) // = id_entrega no CSV do contrato
+  idPedido         Int
+  idCliente        Int
+  nomeDestinatario String         @db.VarChar(100)
+  transportadora   Transportadora
+  statusEntrega    StatusEntrega
+  dataPrevista     DateTime       @db.Date
+  dataEntrega      DateTime?      @db.Date
+  cidadeDestino    String         @db.VarChar(60)
+  ufDestino        String         @db.Char(2)
+  valorFrete       Decimal        @db.Decimal(10, 2)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@map("entregas")
+}
+
+// Controle de remessa exigido pelo contrato (Seção 5): numeração sequencial
+// que nunca reinicia nem duplica, precisa sobreviver a reinícios do processo.
+model Remessa {
+  id             Int      @id @default(autoincrement())
+  numero         Int      @unique
+  nomeArquivo    String
+  totalRegistros Int
+  geradoEm       DateTime @default(now())
+
+  @@map("remessas")
+}
+
+// Espelha o enum de domínio em src/modules/financeiro/enum/financeiro_enum.ts
+// (mesmo racional de separação domínio/Prisma do StatusEntrega acima).
+enum TipoOperacao {
+  P
+  R
+}
+
+enum StatusLancamento {
+  PENDENTE
+  PAGO
+  CANCELADO
+}
+
+enum FormaPagamento {
+  PIX
+  BOLETO
+  CARTAO_CREDITO
+  TRANSFERENCIA
+  DINHEIRO
+}
+
+// idLancamento é a chave natural definida pelo Sistema Financeiro (Grupo 6)
+// no arquivo CSV — não é gerada por nós, por isso não tem @default(autoincrement()).
+model LancamentoFinanceiro {
+  idLancamento     Int              @id
+  descricao        String           @db.VarChar(150)
+  tipoOperacao     TipoOperacao
+  valor            Decimal          @db.Decimal(16, 2)
+  dataVencimento   DateTime         @db.Date
+  dataPagamento    DateTime?        @db.Date
+  status           StatusLancamento
+  formaPagamento   FormaPagamento
+  documentoTitular String           @db.VarChar(18)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@map("lancamentos_financeiros")
+}
+
+// Controle de remessas RECEBIDAS do Financeiro (Seção 5 do contrato
+// Grupo6 -> Grupo7): evita reprocessar um arquivo já confirmado antes.
+model RemessaFinanceiraRecebida {
+  id               Int      @id @default(autoincrement())
+  nomeArquivo      String   @unique
+  totalRegistros   Int
+  totalProcessados Int
+  totalRejeitados  Int
+  recebidoEm       DateTime @default(now())
+
+  @@map("remessas_financeiras_recebidas")
+}

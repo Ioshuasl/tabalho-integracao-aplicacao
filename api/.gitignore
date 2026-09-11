@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+data/exports/*.csv
+!data/exports/.gitkeep
+data/imports/rejeitados/*.csv
+!data/imports/rejeitados/.gitkeep

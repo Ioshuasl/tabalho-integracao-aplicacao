@@ -1,0 +1,757 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sistema de Entregas API",
+    "version": "1.0.0",
+    "description": "API do Sistema de Entregas (Grupo 7) - Integração de Aplicações por Arquivos CSV"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Entrega": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "idPedido": {
+            "type": "integer"
+          },
+          "idCliente": {
+            "type": "integer"
+          },
+          "nomeDestinatario": {
+            "type": "string"
+          },
+          "transportadora": {
+            "type": "string",
+            "enum": [
+              "CORREIOS",
+              "JADLOG",
+              "TOTAL_EXPRESS",
+              "BRASPRESS",
+              "LOGGI",
+              "TRANSPORTADORA_PROPRIA"
+            ]
+          },
+          "statusEntrega": {
+            "type": "string",
+            "enum": [
+              "PENDENTE",
+              "EM_TRANSITO",
+              "ENTREGUE",
+              "DEVOLVIDA",
+              "CANCELADA"
+            ]
+          },
+          "dataPrevista": {
+            "type": "string"
+          },
+          "dataEntrega": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidadeDestino": {
+            "type": "string"
+          },
+          "ufDestino": {
+            "type": "string",
+            "enum": [
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ]
+          },
+          "valorFrete": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "idPedido",
+          "idCliente",
+          "nomeDestinatario",
+          "transportadora",
+          "statusEntrega",
+          "dataPrevista",
+          "dataEntrega",
+          "cidadeDestino",
+          "ufDestino",
+          "valorFrete",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "CriarEntrega": {
+        "type": "object",
+        "properties": {
+          "idPedido": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "idCliente": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "nomeDestinatario": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "transportadora": {
+            "type": "string",
+            "enum": [
+              "CORREIOS",
+              "JADLOG",
+              "TOTAL_EXPRESS",
+              "BRASPRESS",
+              "LOGGI",
+              "TRANSPORTADORA_PROPRIA"
+            ]
+          },
+          "statusEntrega": {
+            "type": "string",
+            "enum": [
+              "PENDENTE",
+              "EM_TRANSITO",
+              "ENTREGUE",
+              "DEVOLVIDA",
+              "CANCELADA"
+            ]
+          },
+          "dataPrevista": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataEntrega": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidadeDestino": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "ufDestino": {
+            "type": "string",
+            "enum": [
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ]
+          },
+          "valorFrete": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 99999999.99
+          }
+        },
+        "required": [
+          "idPedido",
+          "idCliente",
+          "nomeDestinatario",
+          "transportadora",
+          "statusEntrega",
+          "dataPrevista",
+          "dataEntrega",
+          "cidadeDestino",
+          "ufDestino",
+          "valorFrete"
+        ]
+      },
+      "AtualizarEntrega": {
+        "type": "object",
+        "properties": {
+          "idPedido": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "idCliente": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "nomeDestinatario": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "transportadora": {
+            "type": "string",
+            "enum": [
+              "CORREIOS",
+              "JADLOG",
+              "TOTAL_EXPRESS",
+              "BRASPRESS",
+              "LOGGI",
+              "TRANSPORTADORA_PROPRIA"
+            ]
+          },
+          "statusEntrega": {
+            "type": "string",
+            "enum": [
+              "PENDENTE",
+              "EM_TRANSITO",
+              "ENTREGUE",
+              "DEVOLVIDA",
+              "CANCELADA"
+            ]
+          },
+          "dataPrevista": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataEntrega": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidadeDestino": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "ufDestino": {
+            "type": "string",
+            "enum": [
+              "AC",
+              "AL",
+              "AP",
+              "AM",
+              "BA",
+              "CE",
+              "DF",
+              "ES",
+              "GO",
+              "MA",
+              "MT",
+              "MS",
+              "MG",
+              "PA",
+              "PB",
+              "PR",
+              "PE",
+              "PI",
+              "RJ",
+              "RN",
+              "RS",
+              "RO",
+              "RR",
+              "SC",
+              "SP",
+              "SE",
+              "TO"
+            ]
+          },
+          "valorFrete": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 99999999.99
+          }
+        },
+        "required": [
+          "idPedido",
+          "idCliente",
+          "nomeDestinatario",
+          "transportadora",
+          "statusEntrega",
+          "dataPrevista",
+          "dataEntrega",
+          "cidadeDestino",
+          "ufDestino",
+          "valorFrete"
+        ]
+      },
+      "RelatorioImportacaoFinanceiro": {
+        "type": "object",
+        "properties": {
+          "nomeArquivo": {
+            "type": "string"
+          },
+          "totalLido": {
+            "type": "integer"
+          },
+          "totalProcessado": {
+            "type": "integer"
+          },
+          "totalRejeitado": {
+            "type": "integer"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "linha": {
+                  "type": "integer"
+                },
+                "motivo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "linha",
+                "motivo"
+              ]
+            }
+          },
+          "nomeArquivoRejeitados": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "nomeArquivo",
+          "totalLido",
+          "totalProcessado",
+          "totalRejeitado",
+          "erros",
+          "nomeArquivoRejeitados"
+        ]
+      }
+    },
+    "parameters": {}
+  },
+  "paths": {
+    "/api/entregas": {
+      "post": {
+        "tags": [
+          "Entregas"
+        ],
+        "summary": "Cria uma nova entrega",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarEntrega"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Entrega criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Entrega"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Erro de validação"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Entregas"
+        ],
+        "summary": "Lista entregas com paginação e filtros",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "exclusiveMinimum": true,
+              "default": 1
+            },
+            "required": false,
+            "name": "page",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "exclusiveMinimum": true,
+              "maximum": 100,
+              "default": 20
+            },
+            "required": false,
+            "name": "pageSize",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PENDENTE",
+                "EM_TRANSITO",
+                "ENTREGUE",
+                "DEVOLVIDA",
+                "CANCELADA"
+              ]
+            },
+            "required": false,
+            "name": "statusEntrega",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AP",
+                "AM",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MT",
+                "MS",
+                "MG",
+                "PA",
+                "PB",
+                "PR",
+                "PE",
+                "PI",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SP",
+                "SE",
+                "TO"
+              ]
+            },
+            "required": false,
+            "name": "ufDestino",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "required": false,
+            "name": "dataPrevistaInicio",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "required": false,
+            "name": "dataPrevistaFim",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista paginada de entregas"
+          }
+        }
+      }
+    },
+    "/api/entregas/{id}": {
+      "get": {
+        "tags": [
+          "Entregas"
+        ],
+        "summary": "Busca uma entrega pelo id",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "exclusiveMinimum": true
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entrega encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Entrega"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entrega não encontrada"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entregas"
+        ],
+        "summary": "Atualiza uma entrega (substituição completa)",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "exclusiveMinimum": true
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtualizarEntrega"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Entrega atualizada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Entrega"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Entrega não encontrada"
+          },
+          "422": {
+            "description": "Erro de validação"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entregas"
+        ],
+        "summary": "Remove uma entrega",
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "exclusiveMinimum": true
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Entrega removida"
+          },
+          "404": {
+            "description": "Entrega não encontrada"
+          }
+        }
+      }
+    },
+    "/api/entregas/exportacoes": {
+      "post": {
+        "tags": [
+          "Entregas"
+        ],
+        "summary": "Gera uma nova remessa CSV (\"sistema_entrega_NNN.csv\") conforme o contrato Grupo7 -> Grupo1",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PENDENTE",
+                "EM_TRANSITO",
+                "ENTREGUE",
+                "DEVOLVIDA",
+                "CANCELADA"
+              ]
+            },
+            "required": false,
+            "name": "statusEntrega",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AC",
+                "AL",
+                "AP",
+                "AM",
+                "BA",
+                "CE",
+                "DF",
+                "ES",
+                "GO",
+                "MA",
+                "MT",
+                "MS",
+                "MG",
+                "PA",
+                "PB",
+                "PR",
+                "PE",
+                "PI",
+                "RJ",
+                "RN",
+                "RS",
+                "RO",
+                "RR",
+                "SC",
+                "SP",
+                "SE",
+                "TO"
+              ]
+            },
+            "required": false,
+            "name": "ufDestino",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "required": false,
+            "name": "dataPrevistaInicio",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "required": false,
+            "name": "dataPrevistaFim",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Arquivo CSV da remessa gerado com sucesso (text/csv)"
+          },
+          "422": {
+            "description": "Erro de validação dos filtros"
+          }
+        }
+      }
+    },
+    "/api/financeiro/importacoes": {
+      "post": {
+        "tags": [
+          "Financeiro"
+        ],
+        "summary": "Importa uma remessa CSV do Sistema Financeiro (contrato Grupo6 -> Grupo7)",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "arquivo": {
+                    "type": "string",
+                    "description": "Arquivo CSV enviado pelo Sistema Financeiro (financeiro_lancamentos_<AAAAMMDD>_<NNN>.csv)",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "arquivo"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Remessa processada (pode conter registros rejeitados sem interromper o processamento)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RelatorioImportacaoFinanceiro"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Nenhum arquivo enviado"
+          },
+          "409": {
+            "description": "Remessa (nome de arquivo) já recebida e processada anteriormente"
+          },
+          "422": {
+            "description": "Arquivo rejeitado por completo: cabeçalho/delimitador/encoding inválido"
+          }
+        }
+      }
+    }
+  }
+}
